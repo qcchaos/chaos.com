@@ -3,13 +3,12 @@ package myServlet;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public abstract class MyRequest {
+public class MyRequest {
 
-    String requestMethod;
-    String requestUrl;
+    private String requestMethod;
+    private String requestUrl;
 
     public MyRequest(InputStream inputStream) throws Exception {
-        ArrayList<String> requestMessage = null;
         //创建缓冲
         byte[] buffer = new byte[1024];
         int len = 0;
@@ -22,15 +21,23 @@ public abstract class MyRequest {
         String data = str.split("\n")[0];
         //获得各参数数据
         String[] params = data.split(" ");
-        requestMethod = params[0];
-        requestUrl = params[1].replace("/","");
+        this.requestMethod = params[0];
+        this.requestUrl = params[1].replace("/","");
     }
 
-    abstract public String getRequestMethod();
+    public String getRequestMethod(){
+       return this.requestMethod;
+    };
 
-    abstract public void setRequestMethod(String requestMethod);
+    public void setRequestMethod(String requestMethod){
+        this.requestMethod=requestMethod;
+    };
 
-    abstract public String getRequestUrl();
+    public String getRequestUrl(){
+        return this.requestUrl;
+    };
 
-    abstract public void setRequestUrl(String requestUrl);
+    public void setRequestUrl(String requestUrl){
+        this.requestUrl=requestUrl;
+    };
 }

@@ -14,16 +14,13 @@ public class MyServer {
             socket = serverSocket.accept();
             InputStream inputStream = socket.getInputStream();
             OutputStream outputStream = socket.getOutputStream();
-            MyRequest request = new ParamsRequest(inputStream);
+            ParamsRequest request = new ParamsRequest(inputStream);
             MyResponse response = new MyResponse(outputStream);
-            String clazz = new MyMapping().getMapping().get(request.getRequestUrl());
-            if(clazz != null){
-                Class<MyServlet> myServletClass = (Class<MyServlet>) Class.forName(clazz);
-                MyServlet myServlet = myServletClass.newInstance();
-                myServlet.service(request,response);
-            }
+            ServletFactory ServletFactory = new ServletFactory(request.getRequestType());
+            MyHttpServlet myHttpServlet = ServletFactory.getMyHttpServlet();
+            myHttpServlet.service(request,response);
+            socket.close();
         }
-
     }
 
     public static void main(String[] args) {

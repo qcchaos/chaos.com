@@ -6,15 +6,19 @@ public class MyMapping {
     public static HashMap<String,String> mapping = new HashMap<String,String>();
 
     static {
-        mapping.put("Discount","myServlet.MyServlet");
+        mapping.put("Discount","myServlet.StrategyServlet");
     }
 
     static {
-        mapping.put("FullMinus","myServlet.MyServlet");
+        mapping.put("FullMinus","myServlet.StrategyServlet");
     }
 
     static {
-        mapping.put("Normal","myServlet.MyServlet");
+        mapping.put("Normal","myServlet.StrategyServlet");
+    }
+
+    static {
+        mapping.put("default","myServlet.StrategyServlet");
     }
 
 

@@ -6,11 +6,11 @@ public class MyServlet extends MyHttpServlet{
     @Override
     public void doGet(MyRequest request, MyResponse response) throws Exception {
 
-        response.write("芳姐再见！");
+        response.write("芳姐再见！往后无忧！");
     }
 
     @Override
     public void doPost(MyRequest request, MyResponse response) throws Exception {
-        response.write("芳姐再见！");
+        response.write("芳姐再见！往后无忧！");
     }
 }

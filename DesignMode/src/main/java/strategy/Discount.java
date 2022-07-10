@@ -2,14 +2,14 @@ package strategy;
 
 public class Discount extends Taximeter{
 
-    private Double moneyDiscount;
+    private Double Discount;
 
-    public Discount(Double moneyDiscount){
-        this.moneyDiscount = moneyDiscount;
+    public Discount(Double Discount){
+        this.Discount = Discount;
     }
 
     @Override
     public Double charge(Double money) {
-        return money * moneyDiscount;
+        return money * Discount;
     }
 }
